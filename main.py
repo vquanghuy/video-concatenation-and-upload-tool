@@ -53,7 +53,6 @@ def update_console_text():
     global console_text
     while not ffmpeg_output_queue.empty():
         line = ffmpeg_output_queue.get()
-        print(line)
         if line is not None:
             console_text.insert(tk.END, line)
             console_text.see(tk.END)
@@ -105,6 +104,9 @@ def concatenate_videos():
     # Run FFmpeg command
     ffmpeg_command = ['ffmpeg', '-f', 'concat', '-safe', '0', '-i', input_txt_path, '-c', 'copy', output_path]
 
+    # Clear the console_text widget
+    console_text.configure(state='normal')
+    console_text.delete('1.0', tk.END)  # Clears the text from start ('1.0') to end
 
     console_text.insert(tk.END, "\n-------------\n")
     console_text.insert(tk.END, "FFMPEG command:\n")
