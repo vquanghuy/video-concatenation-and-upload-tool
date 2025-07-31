@@ -96,7 +96,7 @@ def concatenate_videos():
     input_txt_path = os.path.join(input_folder, 'input.txt')
     with open(input_txt_path, 'w') as file:
         for filename in sorted(os.listdir(input_folder)):
-            if filename.endswith(('.mp4', '.MP4')):
+            if filename.endswith(('.mp4', '.MP4', '.MOV')):
                 file_path = os.path.join(input_folder, filename)
                 # Wrap file paths with spaces in single quotes
                 file.write(f"file '{file_path}'\n")
